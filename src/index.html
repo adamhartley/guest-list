@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Guest List</title>
+  <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
+  <link rel="stylesheet" href="app.css">
+</head>
+<body>
+
+  <div id="app">
+    <div class="container">
+
+      <div class="row" :style="appStyles">
+        <div class="col-sm-12 text-center">
+          <h1>Guest List</h1>
+        </div>
+      </div>
+
+      <div class="row" :style="appStyles">
+        <div class="col-sm-12">
+          <div class="card">
+            <div class="card-header" >
+              {{event.eventDate}}
+            </div>
+            <div class="card-block">
+              <h4 class="card-title" v-once="event.eventTitle">{{event.eventTitle}}</h4><hr> <!-- v-once directive, data is only loaded once and not for any changes -->
+              <p class="card-text">{{event.eventDescription}}</p>
+              <p class="card-text" v-html="event.signUpText">{{event.signUpText}}</p>
+
+              <form class="form-inline" @submit.prevent="formSubmitted"> <!-- prevent stops data loss on page refresh -->
+                <input type="text" id="nameInput" class="form-control mb-2 mr-sm-2 mb-sm-0" placeholder="Jane Doe" v-model="newNameText">
+                <input type="submit" class="btn btn-primary"/>
+              </form>
+              {{newNameText}}
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="row" :style="appStyles">
+        <div class="col-sm-12">
+          <div class="card">
+            <div class="card-header">
+              Attending ({{guestName.length}} / {{eventCapacity}})
+              <br>
+              <progress :style="{width: eventCapacityPercentage + '%'}"></progress>
+            </div>
+            <div class="card-block">
+              <div v-if="guestName.length > 0">
+                <div class="card-success rounded name-box"
+                  v-for="name in guestName">
+                  {{name.toLowerCase()}}
+                </div>
+              </div>
+              <div v-else>
+                <h4>No names added yet...</h4>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+
+<script src="app.js"></script>
+</body>
+</html>
