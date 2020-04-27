@@ -1,4 +1,4 @@
-new Vue({
+let vm1 = new Vue({
     el: '#app', // Provide the Vue instance an existing DOM element to mount on
     /*
      * The data object for the Vue instance. Vue will recursively convert its properties into getter/setters to make it “reactive”.
@@ -60,7 +60,7 @@ new Vue({
     }
 });
 
-new Vue({
+let vm2 = new Vue({
     el: '#navigation', // Provide the Vue instance an existing DOM element to mount on
     /*
      * The data object for the Vue instance. Vue will recursively convert its properties into getter/setters to make it “reactive”.
@@ -73,5 +73,22 @@ new Vue({
             {name: "Guest Benefits", id: 3, url: "https://www.ebay.com"},
             {name: "Latest News", id: 4, url: "https://www.facebook.com"}
         ]
+    },
+    /*
+     * Methods to be mixed into the Vue instance. You can access these methods directly on the VM instance, or use them in directive expressions.
+     * All methods will have their this context automatically bound to the Vue instance.
+     * Methods always re-render when anything changes, even if there is no change to the data that it displays.
+     */
+    methods: {
+        /*
+         * capacityChanged function accesses and modifies data from the vm1 Vue instance,
+         * changing the eventCapacity to 15
+         */
+        capacityChanged: function () {
+            vm1.eventCapacity = 15;
+            vm1.title = 'New Title'; // adding a new property to vm1 instance, will not have getters/setters to react to changes as it was added after object creation
+        }
     }
 })
+
+console.log(vm1);
