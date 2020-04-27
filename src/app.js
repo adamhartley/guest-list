@@ -51,12 +51,39 @@ let vm1 = new Vue({
         }
     },
     filters: {
-        toUpper: function(value) {
+        toUpper: function (value) {
             return value.toUpperCase();
         },
         formatName: function (value) {
-            return value.slice(0,1).toUpperCase() + value.slice(1).toLowerCase();
+            return value.slice(0, 1).toUpperCase() + value.slice(1).toLowerCase();
         }
+    },
+    /*
+     * Demonstrating Vue.js lifecycle hooks so that they can be viewed while the app is running
+     */
+    beforeCreate: function () {
+        console.log('beforeCreate');
+    },
+    created: function () {
+        console.log('created');
+    },
+    beforeMount: function () {
+        console.log('beforeMount');
+    },
+    mounted: function () {
+        console.log('mounted');
+    },
+    beforeUpdate: function () {
+        console.log('beforeUpdate');
+    },
+    updated: function () {
+        console.log('updated');
+    },
+    beforeDestroy: function () {
+        console.log('beforeDestroy');
+    },
+    destroyed: function () {
+        console.log('destroyed');
     }
 });
 
@@ -90,16 +117,3 @@ let vm2 = new Vue({
         }
     }
 })
-
-let vm3 = new Vue({
-    template: '<div class="col-sm-12 text-center">' +
-                 '<h1>Guest List</h1>' +
-                 '<hr>' +
-                '</div>'
-})
-
-/*
- * Mounts the template to the navigation div (alternative to setting el property). However, using mount
- * replaces any existing markup in the HTML.
- */
-vm3.$mount('#navigation');
