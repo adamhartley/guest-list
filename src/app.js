@@ -30,6 +30,9 @@ new Vue({
                 this.newNameText = ''; // clear the value that was entered in the text box after adding to the array
                 this.eventCapacityPercentage = (this.guestName.length / this.eventCapacity) * 100; // calculate the event capacity percentage for progress bar
             }
+        },
+        keyPressed: function() {
+            console.log('key pressed');
         }
     },
     /*
@@ -48,6 +51,14 @@ new Vue({
     watch: {
         guestName: function(data) {
             console.log('Watch triggered...');
+        }
+    },
+    filters: {
+        toUpper: function(value) {
+            return value.toUpperCase();
+        },
+        formatName: function (value) {
+            return value.slice(0,1).toUpperCase() + value.slice(1).toLowerCase();
         }
     }
 });

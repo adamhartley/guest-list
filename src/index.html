@@ -33,7 +33,12 @@
               <p class="card-text" v-html="event.signUpText">{{event.signUpText}}</p>
 
               <form class="form-inline" @submit.prevent="formSubmitted"> <!-- prevent stops data loss on page refresh -->
-                <input type="text" id="nameInput" class="form-control mb-2 mr-sm-2 mb-sm-0" placeholder="Jane Doe" v-model="newNameText">
+                <input type="text"
+                       id="nameInput"
+                       class="form-control mb-2 mr-sm-2 mb-sm-0"
+                       placeholder="Jane Doe"
+                       v-model="newNameText"
+                       @keyup.space="keyPressed"> <!-- keyup directive listens for space bar -->
                 <input type="submit" class="btn btn-primary"/>
               </form>
               {{newNameText}}
@@ -54,7 +59,7 @@
               <div v-if="guestName.length > 0">
                 <div class="card-success rounded name-box"
                   v-for="name in sortNames">
-                  {{name.toLowerCase()}}
+                  {{name | formatName }} <!-- using a vue filters to operate on the name -->
                 </div>
               </div>
               <div v-else>
