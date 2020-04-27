@@ -1,5 +1,5 @@
 new Vue({
-    el: '#app',
+    el: '#app', // Provide the Vue instance an existing DOM element to mount on
     /*
      * The data object for the Vue instance. Vue will recursively convert its properties into getter/setters to make it “reactive”.
      */
@@ -12,9 +12,6 @@ new Vue({
         },
         newNameText: '',
         guestName: [],
-        appStyles: {
-            marginTop: '25px',
-        },
         eventCapacity: 25,
         eventCapacityPercentage: 0
     },
@@ -62,3 +59,13 @@ new Vue({
         }
     }
 });
+
+new Vue({
+    el: '#navigation', // Provide the Vue instance an existing DOM element to mount on
+    /*
+     * The data object for the Vue instance. Vue will recursively convert its properties into getter/setters to make it “reactive”.
+     */
+    data: {
+        appName: 'Guest List'
+    }
+})

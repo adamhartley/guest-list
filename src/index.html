@@ -12,16 +12,16 @@
 </head>
 <body>
 
-  <div id="app">
-    <div class="container">
-
-      <div class="row" :style="appStyles">
+  <div class="container">
+    <div id="navigation">
+      <div class="row">
         <div class="col-sm-12 text-center">
-          <h1>Guest List</h1>
+          <h1>{{appName}}</h1>
         </div>
       </div>
-
-      <div class="row" :style="appStyles">
+    </div>
+    <div id="app">
+      <div class="row">
         <div class="col-sm-12">
           <div class="card">
             <div class="card-header" >
@@ -47,7 +47,7 @@
         </div>
       </div>
 
-      <div class="row" :style="appStyles">
+      <div class="row">
         <div class="col-sm-12">
           <div class="card">
             <div class="card-header">
@@ -58,8 +58,8 @@
             <div class="card-block">
               <div v-if="guestName.length > 0">
                 <div class="card-success rounded name-box"
-                  v-for="name in sortNames">
-                  {{name | formatName }} <!-- using a vue filters to operate on the name -->
+                  v-for="(name, index) in sortNames" :key="name"> <!-- dynamically bind name as unique identifier -->
+                  {{name | formatName }} ({{ index + 1 }}) <!-- using a vue filters to operate on the name -->
                 </div>
               </div>
               <div v-else>
