@@ -81,14 +81,25 @@ let vm2 = new Vue({
      */
     methods: {
         /*
-         * capacityChanged function accesses and modifies data from the vm1 Vue instance,
-         * changing the eventCapacity to 15
+         * changedTitle function demonstrates how vanilla JavaScript can be used and combined with Vue properties. Here we
+         * are using the Vue $ref property along with the innerText JavaScript property
          */
-        capacityChanged: function () {
-            vm1.eventCapacity = 15;
-            vm1.title = 'New Title'; // adding a new property to vm1 instance, will not have getters/setters to react to changes as it was added after object creation
+        changedTitle: function () {
+            this.$refs.name.innerText = 'Title changed'; // refs are not reactive, and could be overwritten by Vue.js when there is a re-render
+            console.log(this.$refs);
         }
     }
 })
 
-console.log(vm1);
+let vm3 = new Vue({
+    template: '<div class="col-sm-12 text-center">' +
+                 '<h1>Guest List</h1>' +
+                 '<hr>' +
+                '</div>'
+})
+
+/*
+ * Mounts the template to the navigation div (alternative to setting el property). However, using mount
+ * replaces any existing markup in the HTML.
+ */
+vm3.$mount('#navigation');

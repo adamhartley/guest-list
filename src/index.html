@@ -16,7 +16,7 @@
     <div id="navigation">
       <div class="row">
         <div class="col-sm-12 text-center">
-          <h1>{{appName}}</h1>
+          <h1 @click="changedTitle" ref="name"></h1> <!-- utilizing Vue attribute ref -->
           <hr>
         </div>
         <div>
@@ -28,7 +28,6 @@
         </div>
       </div>
       <hr>
-      <button @click="capacityChanged">Change capacity</button>
     </div>
     <div id="app">
       <div class="row">
