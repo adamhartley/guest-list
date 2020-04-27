@@ -66,6 +66,12 @@ new Vue({
      * The data object for the Vue instance. Vue will recursively convert its properties into getter/setters to make it “reactive”.
      */
     data: {
-        appName: 'Guest List'
+        appName: 'Guest List',
+        navLinks: [
+            {name: "Home", id: 1, url: "https://www.google.com"},
+            {name: "Upcoming Events", id: 2, url: "https://www.amazon.com"},
+            {name: "Guest Benefits", id: 3, url: "https://www.ebay.com"},
+            {name: "Latest News", id: 4, url: "https://www.facebook.com"}
+        ]
     }
 })
