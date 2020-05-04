@@ -11,3 +11,41 @@
 .row {
   margin-top: 25px;
 }
+
+/*
+  * Vue transaction classes adding fade effect
+ */
+.fade-enter, .fade-leave-to {
+  opacity: 0;
+}
+
+.fade-enter-active, .fade-leave-active {
+  transition: opacity .5s;
+}
+
+/* CSS animations for remove image button */
+.scale-enter-active {
+  animation: scale-in 0.5s;
+}
+
+.scale-leave-active {
+  animation: scale-out 0.5s;
+}
+
+@keyframes scale-in {
+  0% {
+    transform: scale(0);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+@keyframes scale-out {
+  0% {
+    transform: scale(1);
+  }
+  100% {
+    transform: scale(0);
+  }
+}
