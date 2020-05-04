@@ -32,6 +32,10 @@
   animation: scale-out 0.5s;
 }
 
+.scale-move {
+  transition: transform 1s;
+}
+
 @keyframes scale-in {
   0% {
     transform: scale(0);

@@ -13,7 +13,7 @@ let vm1 = new Vue({
         newNameText: '',
         guestName: [],
         eventCapacity: 25,
-        eventCapacityPercentage: 0
+        eventCapacityPercentage: 0,
     },
     /*
      * Methods to be mixed into the Vue instance. You can access these methods directly on the VM instance, or use them in directive expressions.
